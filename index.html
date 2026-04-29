@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Vision Consulting | Solution Architecture · Coming Soon</title>
+  <meta name="description" content="Smart Vision Consulting — The Architecture of Success. Expert solution architecture for IoT, Solar, Smart Home, and IT convergence. Pretoria, South Africa.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Smart Vision Consulting — Landing / Coming Soon Page
+       URL: consult.smart-vision.co.za
+       Division brand: The Architecture of Success · #1E9AD6 (SV Blue) */
+    :root {
+      --blue:    #1E9AD6;
+      --blue-dk: #0E5F8A;
+      --navy:    #1A2F4E;
+      --bg:      #060F1A;
+      --bg-surf: #0A1622;
+      --bg-card: #0F1E2E;
+      --txt:     #E0E8F4;
+      --muted:   #6E8FA8;
+      --border:  rgba(30,154,214,0.18);
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family:'IBM Plex Sans',system-ui,sans-serif;
+      background:var(--bg);
+      color:var(--txt);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+    h1,h2,h3,h4 { font-family:'Rajdhani',sans-serif; font-weight:700; }
+    .mono { font-family:'IBM Plex Mono',monospace; }
+
+    header {
+      padding:1.5rem 2rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:1px solid var(--border);
+    }
+    .nav-brand {
+      display:flex;
+      align-items:center;
+      gap:0.75rem;
+    }
+    .nav-logo { height:34px; width:auto; }
+    .nav-title {
+      font-family:'Rajdhani',sans-serif;
+      font-size:1rem;
+      font-weight:700;
+      color:var(--txt);
+    }
+    .nav-sub {
+      font-family:'IBM Plex Mono',monospace;
+      font-size:0.62rem;
+      color:var(--blue);
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+    }
+    .header-back {
+      font-family:'IBM Plex Mono',monospace;
+      font-size:0.72rem;
+      color:var(--muted);
+      text-decoration:none;
+      transition:color 0.2s;
+    }
+    .header-back:hover { color:var(--blue); }
+
+    /* Split layout */
+    .hero {
+      flex:1;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      min-height:calc(100vh - 70px);
+    }
+    .hero-left {
+      padding:4rem 3rem 3rem 2rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      border-right:1px solid var(--border);
+    }
+    .hero-right {
+      padding:4rem 2rem 3rem 3rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      background:var(--bg-surf);
+    }
+
+    .division-tag {
+      display:inline-flex;
+      align-items:center;
+      gap:0.5rem;
+      margin-bottom:1.5rem;
+    }
+    .tag-dot {
+      width:7px; height:7px;
+      background:var(--blue);
+      border-radius:50%;
+      animation:pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:0.3; transform:scale(1.5); }
+    }
+    .tag-text {
+      font-family:'IBM Plex Mono',monospace;
+      font-size:0.68rem;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      color:var(--blue);
+    }
+
+    h1 {
+      font-size:clamp(2rem,5vw,3.5rem);
+      line-height:1.05;
+      margin-bottom:0.5rem;
+    }
+    h1 .accent { color:var(--blue); }
+    .tagline {
+      font-family:'IBM Plex Mono',monospace;
+      font-size:0.85rem;
+      color:var(--blue);
+      margin-bottom:1.5rem;
+      letter-spacing:0.04em;
+    }
+    .scripture {
+      border-left:3px solid var(--blue);
+      padding-left:0.9rem;
+      margin:1.5rem 0;
+    }
+    .scripture p {
+      font-style:italic;
+      color:var(--muted);
+      font-size:0.88rem;
+      line-height:1.65;
+    }
+    .scripture-ref {
+      font-family:'IBM Plex Mono',monospace;
+      font-size:0.7rem;
+      color:var(--blue);
+      margin-top:0.3rem;
+    }
+    .desc { font-size:0.95rem; color:rgba(224,232,244,0.8); line-height:1.75; margin-bottom:2rem; }
+
+    /* Services preview */
+    .services { display:flex; flex-direction:column; gap:0.75rem; }
+    .service-item {
+      display:flex;
+      align-items:flex-start;
+      gap:0.75rem;
+      background:var(--bg-card);
+      border:1px solid var(--border);
+      border-radius:9px;
+      padding:1rem 1.1rem;
+      transition:border-color 0.2s;
+    }
+    .service-item:hover { border-color:var(--blue); }
+    .service-num {
+      font-family:'IBM Plex Mono',monospace;
+      font-size:0.7rem;
+      color:var(--blue);
+      background:rgba(30,154,214,0.1);
+      border:1px solid rgba(30,154,214,0.2);
+      border-radius:5px;
+      padding:0.15rem 0.4rem;
+      flex-shrink:0;
+      margin-top:0.1rem;
+    }
+    .service-name { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1rem; margin-bottom:0.25rem; }
+    .service-desc { font-size:0.82rem; color:var(--muted); line-height:1.55; }
+
+    /* Contact CTA */
+    .cta-card {
+      background:var(--bg-card);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:1.75rem;
+      margin-bottom:1.5rem;
+    }
+    .cta-label {
+      font-family:'IBM Plex Mono',monospace;
+      font-size:0.68rem;
+      text-transform:uppercase;
+      letter-spacing:0.12em;
+      color:var(--blue);
+      margin-bottom:0.5rem;
+    }
+    .cta-heading { font-size:1.3rem; margin-bottom:0.75rem; }
+    .cta-text { font-size:0.87rem; color:var(--muted); line-height:1.65; margin-bottom:1.25rem; }
+    .form-row { display:flex; flex-direction:column; gap:0.75rem; }
+    .form-input {
+      background:rgba(30,154,214,0.05);
+      border:1px solid var(--border);
+      border-radius:7px;
+      padding:0.7rem 1rem;
+      color:var(--txt);
+      font-family:'IBM Plex Sans',sans-serif;
+      font-size:0.88rem;
+      outline:none;
+      transition:border-color 0.2s;
+    }
+    .form-input:focus { border-color:var(--blue); }
+    .form-btn {
+      background:var(--blue);
+      color:#fff;
+      border:none;
+      border-radius:7px;
+      padding:0.75rem;
+      font-family:'IBM Plex Sans',sans-serif;
+      font-size:0.9rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:all 0.2s;
+    }
+    .form-btn:hover { background:var(--blue-dk); transform:translateY(-1px); }
+    .form-success {
+      display:none;
+      font-family:'IBM Plex Mono',monospace;
+      font-size:0.8rem;
+      color:var(--blue);
+      text-align:center;
+      padding:1rem;
+      background:rgba(30,154,214,0.06);
+      border:1px solid var(--border);
+      border-radius:7px;
+    }
+    .form-success.show { display:block; }
+
+    .contact-details { display:flex; flex-direction:column; gap:0.6rem; }
+    .contact-line {
+      font-size:0.83rem;
+      color:var(--muted);
+      display:flex;
+      align-items:center;
+      gap:0.5rem;
+    }
+    .contact-line a { color:var(--blue); text-decoration:none; }
+    .contact-line a:hover { text-decoration:underline; }
+
+    footer {
+      background:var(--bg-surf);
+      border-top:1px solid var(--border);
+      padding:1.25rem 2rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:1rem;
+    }
+    footer p { font-size:0.78rem; color:var(--muted); }
+    footer a { color:var(--blue); text-decoration:none; }
+
+    @media(max-width:768px) {
+      .hero { grid-template-columns:1fr; }
+      .hero-left { border-right:none; border-bottom:1px solid var(--border); padding:3rem 1.5rem 2rem; }
+      .hero-right { padding:2rem 1.5rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-brand">
+    <img src="assets/logos/sv-logo.png" alt="Smart Vision" class="nav-logo">
+    <div>
+      <div class="nav-title">Smart Vision Consulting</div>
+      <div class="nav-sub">The Architecture of Success</div>
+    </div>
+  </div>
+  <a href="http://smart-vision.co.za" class="header-back">← smart-vision.co.za</a>
+</header>
+
+<div class="hero">
+  <!-- Left: Brand + services -->
+  <div class="hero-left">
+    <div class="division-tag">
+      <div class="tag-dot"></div>
+      <span class="tag-text">consult.smart-vision.co.za · Launching Soon</span>
+    </div>
+
+    <h1>The Architecture<br>of <span class="accent">Success</span></h1>
+    <p class="tagline">Solution Architecture · Engineered from Experience.</p>
+
+    <div class="scripture">
+      <p>"Without counsel purposes are disappointed: but in the multitude of counsellors they are established."</p>
+      <div class="scripture-ref">— Proverbs 15:22</div>
+    </div>
+
+    <p class="desc">
+      In an era of fragmented technology, true efficiency is found in the architecture
+      that connects it. Smart Vision Consulting is the strategic arm of the group —
+      rooted in Tier 1 surveillance, SCADA, and industrial automation.
+    </p>
+
+    <div class="services">
+      <div class="service-item">
+        <span class="service-num">01</span>
+        <div>
+          <div class="service-name">Solution Architecture</div>
+          <div class="service-desc">Master Plan design — IoT, Solar, Smart Home, and IT systems speaking one language</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-num">02</span>
+        <div>
+          <div class="service-name">Systems Integration</div>
+          <div class="service-desc">SCADA, telemetry, BMS, and OT/IT convergence across commercial and industrial environments</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-num">03</span>
+        <div>
+          <div class="service-name">Technology Audit &amp; Strategy</div>
+          <div class="service-desc">Independent assessment of your existing infrastructure with a clear roadmap forward</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-num">04</span>
+        <div>
+          <div class="service-name">Project &amp; Programme Management</div>
+          <div class="service-desc">Full-lifecycle delivery from scope definition through commissioning and handover</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Contact CTA -->
+  <div class="hero-right">
+    <div class="cta-card">
+      <div class="cta-label">Engage Consulting</div>
+      <h2 class="cta-heading">Start with a Conversation</h2>
+      <p class="cta-text">
+        Tell us about your challenge. We'll schedule a no-obligation discovery call
+        to understand your environment and recommend the right approach.
+      </p>
+      <form class="form-row" onsubmit="submitConsult(event)">
+        <input class="form-input" type="text" placeholder="Your name" required>
+        <input class="form-input" type="email" placeholder="your@company.co.za" required>
+        <input class="form-input" type="tel" placeholder="+27 82 000 0000">
+        <textarea class="form-input" rows="3" placeholder="Briefly describe your challenge or project..." style="resize:vertical;"></textarea>
+        <button class="form-btn" type="submit">Request a Discovery Call →</button>
+      </form>
+      <div class="form-success" id="consult-success">
+        ✓ Request received — we'll be in touch within one business day.
+      </div>
+    </div>
+
+    <div class="contact-details">
+      <div class="contact-line">
+        <span style="color:var(--blue);">✉</span>
+        <a href="mailto:consulting@smart-vision.co.za">consulting@smart-vision.co.za</a>
+      </div>
+      <div class="contact-line">
+        <span style="color:var(--blue);">◆</span>
+        Pretoria, Gauteng, South Africa
+      </div>
+      <div class="contact-line">
+        <span style="color:var(--blue);">◆</span>
+        Part of the <a href="http://smart-vision.co.za">Smart Vision Group</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Smart Vision (Pty) Ltd — Consulting Division · consult.smart-vision.co.za</p>
+  <p>Isaiah 32:18 — "My people will abide in peaceful habitation, in secure dwellings."</p>
+</footer>
+
+<script>
+  function submitConsult(e) {
+    e.preventDefault();
+    e.target.style.display = 'none';
+    document.getElementById('consult-success').classList.add('show');
+    /* TODO: wire to Cloudflare Worker before launch */
+  }
+</script>
+</body>
+</html>
